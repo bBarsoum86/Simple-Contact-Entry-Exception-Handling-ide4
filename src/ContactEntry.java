@@ -16,10 +16,20 @@ public class ContactEntry {
             // Email input - Students will add exception handling here
             System.out.print("Enter email: ");
             String email = scanner.nextLine();
+            if (email.trim().isEmpty()) {
+                throw new IllegalArgumentException("Email cannot be empty.");
+            } else if (!isValidEmail(email)) {
+                throw new IllegalArgumentException("Invalid email format.");
+            }
 
             // Phone number input - Students will add exception handling here
             System.out.print("Enter phone number: ");
             String phoneNumber = scanner.nextLine();
+            if (phoneNumber.trim().isEmpty()) {
+                throw new IllegalArgumentException("Phone number cannot be empty.");
+            } else if (!isNumeric(phoneNumber)) {
+                throw new IllegalArgumentException("Phone number must be numeric.");
+            }
 
             // Create Contact and display information
             Contact contact = new Contact(name, email, phoneNumber);
